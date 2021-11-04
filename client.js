@@ -16,7 +16,7 @@ const connect = function() {
   });
 
   conn.on('connect', () => {
-    conn.write("Name: ATT");
+    conn.write("Name: ANA");
   });
   
   // conn.on('connect', () => {
@@ -49,7 +49,7 @@ const connect = function() {
 
 
 
-console.log("Connecting ...");
-connect();
+// console.log("Connecting ...");
+// connect();
 
 module.exports = {connect};
