@@ -6,31 +6,35 @@ const { stdin } = require("process");
 let connection;   //stores the active TCP object
 
 
-const handleUserInput = function() {
-  process.stdin.on('data', (key) => {
-    if (key === '\u0003') {
-      process.exit();
-    }
+const handleUserInput = function(key) {
+  // process.stdin.on('data', (key) => {
+  if (key === '\u0003') {
+    process.exit();
+  }
     
-    if (key === "w") {
-      connection.write("Move: up");
-    }
+  if (key === "w" || key === '\u001b[A') {
+    connection.write("Move: up");
+  }
 
-    if (key === "a") {
-      connection.write("Move: left");
-    }
+  if (key === "a" || key === '\u001b[D') {
+    connection.write("Move: left");
+  }
     
-    if (key === "s") {
-      connection.write("Move: down");
-    }
+  if (key === "s" || key === '\u001b[B') {
+    connection.write("Move: down");
+  }
 
-    if (key === "d") {
-      connection.write("Move: right");
-    }
-    
-  });
+  if (key === "d" || key === '\u001b[C') {
+    connection.write("Move: right");
+  }
 
-  return stdin;
+  if (key === "p") {
+    connection.write("Say: Let's play!!!");
+  }
+
+  // });
+
+  // return stdin;
 };
 
 
